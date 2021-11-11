@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Timer6</string>
+    <string name="btnStart">Start</string>
+    <string name="btnStop">Pause</string>
+    <string name="btnReset">Reset</string>
+    <string name="tvTimer">00:00:00</string>
+</resources>
