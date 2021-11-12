@@ -26,15 +26,23 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState!= null) {
             seconds = savedInstanceState.getInt("seconds", seconds);
             isRunning = savedInstanceState.getBoolean("isRunning", isRunning);
+            wasRunning = savedInstanceState.getBoolean("wasRunning", wasRunning);
+
         }
         runTimer();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
+   @Override
+    protected void onPause() {
+        super.onPause();
         wasRunning = isRunning;
         isRunning = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isRunning = wasRunning;
     }
 
     //помогает сохранять данные при повороте экрана
@@ -43,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putInt("seconds",seconds);
         outState.putBoolean("isRunning",isRunning);
+        outState.putBoolean("wasRunning",wasRunning);
     }
 
     public void setStart(View view) {
